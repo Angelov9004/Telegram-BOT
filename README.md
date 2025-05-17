@@ -24,7 +24,7 @@ TELEGRAM-BOT/
 
 
 
-Quick Start
+## Quick Start
 
     sudo apt install -y python3 python3-pip python3-venv lm-sensors
     python3 -m venv venv
@@ -32,29 +32,29 @@ Quick Start
     pip install python-telegram-bot python-dotenv psutil
 
 
-Clone the Repository
+## Clone the Repository
 
     git clone git@github.com:Angelov9004/Telegram-BOT.git
     cd Telegram-BOT
 
 
-Create and Activate a Virtual Environment
+## Create and Activate a Virtual Environment
 
      python3 -m venv .venv
      source .venv/bin/activate
 
 
-Install Dependencies
+## Install Dependencies
 
     pip install -r requirements.txt
 
 
-Create a .env File
+## Create a .env File
 
     nano .env  / or sudo nano .env
 
 
-Add the following content:
+## Add the following content:
 
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 AUTHORIZED_USER_ID=your_telegram_user_id
@@ -89,7 +89,7 @@ Reboots or powers off the server.
 Shows interactive buttons (status, reboot, shutdown).
 
 
-Shell Commands
+## Shell Commands
 
 Once authenticated, you can send any shell command (e.g., uptime, ls, df -h) and the output will be sent back to the chat.
 Auto Alerts
@@ -112,7 +112,7 @@ If any threshold is exceeded, it notifies the authorized user.
    All shell commands are logged to /var/log/telegram_bot.log.
 
 
-Requirements
+## Requirements
 
 
    Linux-based system
@@ -127,7 +127,7 @@ Requirements
    Choose YES to all ,  Y !
 
 
-Create a systemd Service
+## Create a systemd Service
 
     sudo nano /etc/systemd/system/sysbot.service
 
@@ -151,7 +151,7 @@ Create a systemd Service
 
 
 
-AFTER: 
+## AFTER: 
 
  
     sudo systemctl daemon-reload
@@ -160,7 +160,7 @@ AFTER:
     sudo systemctl status sysbot
 
    
-
+ENJOY !  
     
 
 
