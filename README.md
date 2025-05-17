@@ -1,19 +1,21 @@
 # SysBot – Telegram System Admin Bot
 
-SysBot is a secure Telegram bot for **remote system monitoring and administration** of Linux servers. It allows a single authorized user to:
+SysBot is a secure Telegram bot for **remote system monitoring and administration** of Linux servers.  
+It allows a single authorized user to:
 
-- Authenticate securely for a limited time
--  View live system status (CPU, RAM, disk, temperatures)
+-  Authenticate securely for a limited time
+- View live system status (CPU, RAM, disk, temperatures)
 -  Reboot the server
 -  Shut down the server
-- Execute shell commands with logging
-- Receive automatic alerts on high resource usage
+-  Execute shell commands with logging
+-  Receive automatic alerts on high resource usage
 
 ---
 
-##  Project Structure
+## Project Structure
 
-sysbot/
+
+TELEGRAM-BOT/
 ├── sysbot.py
 ├── .env
 ├── requirements.txt
@@ -21,34 +23,49 @@ sysbot/
 └── README.md
 
 
----
 
-##  Quick Start
+Quick Start
 
-### 1. Clone the repository
+    sudo apt install -y python3 python3-pip python3-venv lm-sensors
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install python-telegram-bot python-dotenv psutil
 
-git clone https://github.com/your-username/sysbot.git
-cd sysbot
 
-2. Create and activate a virtual environment
+Clone the Repository
 
-python3 -m venv .venv
-source .venv/bin/activate
+    git clone git@github.com:Angelov9004/Telegram-BOT.git
+    cd Telegram-BOT
 
-3. Install dependencies
 
-pip install -r requirements.txt
+Create and Activate a Virtual Environment
 
-4. Create a .env file in the root folder:
+     python3 -m venv .venv
+     source .venv/bin/activate
+
+
+Install Dependencies
+
+    pip install -r requirements.txt
+
+
+Create a .env File
+
+    nano .env  / or sudo nano .env
+
+
+Add the following content:
 
 TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 AUTHORIZED_USER_ID=your_telegram_user_id
 AUTH_PASSWORD=your_secret_password
 
-You can get TELEGRAM_BOT_TOKEN from @BotFather
-To get your Telegram user ID, send /start to @userinfobot
+ You can get your bot token from @BotFather
+ To get your Telegram user ID, send /start to @userinfobot
 
- Features
+
+### Features
+
 /auth <password>
 
 Authenticates you for 30 minutes.
@@ -56,13 +73,13 @@ Authenticates you for 30 minutes.
 
 Returns current system health:
 
-CPU usage
+   CPU usage
 
-RAM usage
+   RAM usage
 
-Disk usage
+   Disk usage
 
- Temperatures (if lm-sensors is installed)
+   Temperatures (if lm-sensors is installed)
 
 /reboot and /shutdown
 
@@ -70,44 +87,52 @@ Reboots or powers off the server.
 /start
 
 Shows interactive buttons (status, reboot, shutdown).
- Shell Commands
+
+
+Shell Commands
 
 Once authenticated, you can send any shell command (e.g., uptime, ls, df -h) and the output will be sent back to the chat.
- Auto Alerts
+Auto Alerts
 
 Every 5 minutes, the bot checks:
 
-CPU usage > 90%
+   CPU usage > 90%
 
-RAM usage > 90%
+   RAM usage > 90%
 
-Disk usage > 90%
+   Disk usage > 90%
 
 If any threshold is exceeded, it notifies the authorized user.
- Security
+   Security
 
-Only one authorized user (from .env) can use the bot.
+   Only one authorized user (defined in .env) can use the bot.
 
-Command output is limited to 4000 characters.
+   Output is limited to 4000 characters per message.
 
-All shell commands are logged to /var/log/telegram_bot.log.
+   All shell commands are logged to /var/log/telegram_bot.log.
 
- Requirements
 
- Linux-based system
+Requirements
 
-Python 3.8+
 
-lm-sensors (optional for temperature readings):
+   Linux-based system
 
-     sudo apt install lm-sensors
-     sudo sensors-detect
+   Python 3.8+
 
- Create a systemd Service
+   (Optional) Temperature support:
+
+    sudo apt install lm-sensors
+    sudo sensors-detect
+
+   Choose YES to all ,  Y !
+
+
+Create a systemd Service
 
     sudo nano /etc/systemd/system/sysbot.service
 
-Paste this content:
+
+   Paste inside this : 
 
      [Unit]
      Description=SysBot Telegram Bot
@@ -124,19 +149,20 @@ Paste this content:
      [Install]
      WantedBy=multi-user.target
 
- Save and exit:
 
-    CTRL + O, then Enter to save
 
-    CTRL + X to exit
+AFTER: 
 
- Reload and enable on startup:
+ 
+    sudo systemctl daemon-reload
+    sudo systemctl enable sysbot
+    sudo systemctl start sysbot
+    sudo systemctl status sysbot
 
-sudo systemctl daemon-reload
-sudo systemctl enable sysbot
-sudo systemctl start sysbot
+   
 
- License
+    
 
-MIT – free to use and modify.
+
+
 
