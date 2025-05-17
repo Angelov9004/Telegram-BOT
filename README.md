@@ -7,7 +7,7 @@ SysBot is a secure Telegram bot for **remote system monitoring and administratio
 -  Reboot the server
 -  Shut down the server
 - Execute shell commands with logging
-- ⚠ Receive automatic alerts on high resource usage
+- Receive automatic alerts on high resource usage
 
 ---
 
@@ -45,8 +45,8 @@ TELEGRAM_BOT_TOKEN=your_telegram_bot_token
 AUTHORIZED_USER_ID=your_telegram_user_id
 AUTH_PASSWORD=your_secret_password
 
-     You can get TELEGRAM_BOT_TOKEN from @BotFather
-     To get your Telegram user ID, send /start to @userinfobot
+You can get TELEGRAM_BOT_TOKEN from @BotFather
+To get your Telegram user ID, send /start to @userinfobot
 
  Features
 /auth <password>
@@ -56,13 +56,13 @@ Authenticates you for 30 minutes.
 
 Returns current system health:
 
-    CPU usage
+CPU usage
 
-    RAM usage
+RAM usage
 
-    Disk usage
+Disk usage
 
-    Temperatures (if lm-sensors is installed)
+ Temperatures (if lm-sensors is installed)
 
 /reboot and /shutdown
 
@@ -77,52 +77,52 @@ Once authenticated, you can send any shell command (e.g., uptime, ls, df -h) and
 
 Every 5 minutes, the bot checks:
 
-    CPU usage > 90%
+CPU usage > 90%
 
-    RAM usage > 90%
+RAM usage > 90%
 
-    Disk usage > 90%
+Disk usage > 90%
 
 If any threshold is exceeded, it notifies the authorized user.
  Security
 
-    Only one authorized user (from .env) can use the bot.
+Only one authorized user (from .env) can use the bot.
 
-    Command output is limited to 4000 characters.
+Command output is limited to 4000 characters.
 
-    All shell commands are logged to /var/log/telegram_bot.log.
+All shell commands are logged to /var/log/telegram_bot.log.
 
  Requirements
 
-    Linux-based system
+ Linux-based system
 
-    Python 3.8+
+Python 3.8+
 
-    lm-sensors (optional for temperature readings):
+lm-sensors (optional for temperature readings):
 
-sudo apt install lm-sensors
-sudo sensors-detect
+     sudo apt install lm-sensors
+     sudo sensors-detect
 
  Create a systemd Service
 
-sudo nano /etc/systemd/system/sysbot.service
+    sudo nano /etc/systemd/system/sysbot.service
 
 Paste this content:
 
-[Unit]
-Description=SysBot Telegram Bot
-After=network-online.target
-Wants=network-online.target
-
-[Service]
-WorkingDirectory=/path/to/sysbot
-ExecStart=/path/to/sysbot/.venv/bin/python sysbot.py
-Restart=always
-User=your_user
-EnvironmentFile=/path/to/sysbot/.env
-
-[Install]
-WantedBy=multi-user.target
+     [Unit]
+     Description=SysBot Telegram Bot
+     After=network-online.target
+     Wants=network-online.target
+     
+     [Service]
+     WorkingDirectory=/path/to/sysbot
+     ExecStart=/path/to/sysbot/.venv/bin/python sysbot.py
+     Restart=always
+     User=your_user
+     EnvironmentFile=/path/to/sysbot/.env
+     
+     [Install]
+     WantedBy=multi-user.target
 
  Save and exit:
 
