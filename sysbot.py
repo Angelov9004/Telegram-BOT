@@ -17,7 +17,7 @@ class SysBot:
     def __init__(self):
         self.TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
         self.AUTHORIZED_USER = int(os.getenv("AUTHORIZED_USER_ID"))
-        self.AUTH_PASSWORD = os.getenv("AUTH_PASSWORD", "gnx@1337")
+        self.AUTH_PASSWORD = os.getenv("AUTH_PASSWORD", "defaultPassword")
         self.SESSION_DURATION = timedelta(minutes=30)
         self.user_sessions = {}
         self.LOG_FILE = "/var/log/telegram_bot.log"
