@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+.env
+
+# Logs
+*.log
+*.log.*
+*.out
+/var/log/telegram_bot.log
+
+# Environment/IDE
+.env
+venv/
+env/
+*.egg-info/
+*.sqlite3
+.Python
+.idea/
+.vscode/
+*.swp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Optional: pytest or coverage
+.pytest_cache/
+.coverage
+htmlcov/
