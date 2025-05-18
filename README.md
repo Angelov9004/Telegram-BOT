@@ -56,9 +56,9 @@ TELEGRAM-BOT/
 
 ## Add the following content:
 
-TELEGRAM_BOT_TOKEN=your_telegram_bot_token
-AUTHORIZED_USER_ID=your_telegram_user_id
-AUTH_PASSWORD=your_secret_password
+     TELEGRAM_BOT_TOKEN=your_telegram_bot_token
+     AUTHORIZED_USER_ID=your_telegram_user_id
+     AUTH_PASSWORD=your_secret_password
 
  You can get your bot token from @BotFather
  To get your Telegram user ID, send /start to @userinfobot
